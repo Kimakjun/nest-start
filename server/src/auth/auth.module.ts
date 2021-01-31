@@ -5,6 +5,7 @@ import { UserModule } from 'src/user/user.module';
 import { AuthService } from './auth.service';
 import { LocaStrategy } from './local.strategy';
 import { AuthResolver } from './auth.resolver';
+import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { AuthResolver } from './auth.resolver';
       signOptions: { expiresIn: '1d' },
     }),
   ],
-  providers: [AuthResolver, AuthService, LocaStrategy],
+  providers: [AuthResolver, AuthService, LocaStrategy, JwtStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}
