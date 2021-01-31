@@ -9,9 +9,9 @@ export class User {
   @Field((type) => String)
   _id: string;
 
-  @Field((type) => String)
+  @Field((type) => String, { nullable: true })
   @Prop({ default: 'User' })
-  name: string;
+  name?: string;
 
   @Field((type) => String)
   @Prop({ required: true, unique: true })
