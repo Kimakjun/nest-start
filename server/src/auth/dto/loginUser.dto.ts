@@ -1,6 +1,6 @@
 import { Field, InputType, ObjectType, PickType } from '@nestjs/graphql';
-import { User } from '../user.schema';
-import { BaseResponse } from './baseResponse.dto';
+import { BaseResponse } from 'src/common/dto/baseResponse.dto';
+import { User } from 'src/User/user.schema';
 
 // 입력값 검증하는곳
 @InputType('InputLoginUser')

@@ -4,7 +4,7 @@ import {
   RegisterUserRequest,
   RegisterUserResponse,
 } from './dto/registerUser.dto';
-import { LoginUserRequest, LoginUserResponse } from './dto/loginUser.dto';
+
 import { UserService } from './user.service';
 
 @Resolver()
@@ -14,13 +14,6 @@ export class UserResolver {
   @Query(() => String)
   sayHello(): string {
     return 'Hello World!';
-  }
-
-  @Mutation(() => LoginUserResponse)
-  async login(
-    @Args('input') input: LoginUserRequest,
-  ): Promise<LoginUserResponse> {
-    return { result: 'string', token: 'token' };
   }
 
   @Mutation(() => RegisterUserResponse)
