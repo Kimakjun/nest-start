@@ -1,6 +1,7 @@
 import { Field, InputType, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { IsEmail } from 'class-validator';
 
 @InputType('inputUser', { isAbstract: true })
 @ObjectType()
@@ -15,6 +16,7 @@ export class User {
 
   @Field((type) => String)
   @Prop({ required: true, unique: true })
+  @IsEmail()
   email: string;
 
   @Field((type) => String)
