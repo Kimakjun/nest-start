@@ -2,11 +2,13 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UserModule } from './User/user.module';
 
 const PROD = process.env.NODE_ENV === 'production';
 
 @Module({
   imports: [
+    UserModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),

@@ -14,7 +14,7 @@ async function bootstrap() {
     app.use(helmet());
     app.use(hpp());
   } else {
-    app.use(morgan());
+    app.use(morgan('dev'));
   }
 
   await app.listen(PORT);
