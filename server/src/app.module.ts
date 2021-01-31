@@ -1,10 +1,28 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+
+const PROD = process.env.NODE_ENV === 'production';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    GraphQLModule.forRoot({
+      playground: true,
+      autoSchemaFile: true,
+      cors: {
+        origin: PROD ? /domain\.$/ : true,
+        credentials: true,
+      },
+    }),
+    MongooseModule.forRoot(process.env.DB_CONFIG, {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useUnifiedTopology: true,
+    }),
+  ],
 })
 export class AppModule {}
