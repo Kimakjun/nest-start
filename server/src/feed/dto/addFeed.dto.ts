@@ -3,7 +3,7 @@ import { BaseResponse } from 'src/common/dto/baseResponse.dto';
 import { Feed } from '../feed.schema';
 
 @InputType('InputAddFeed')
-export class AddInputRequest extends PickType(Feed, ['content']) {}
+export class AddFeedRequest extends PickType(Feed, ['content']) {}
 
 @ObjectType()
 export class AddFeedsResponse extends BaseResponse {

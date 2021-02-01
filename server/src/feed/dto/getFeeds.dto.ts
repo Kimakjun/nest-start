@@ -3,7 +3,7 @@ import { BaseResponse } from 'src/common/dto/baseResponse.dto';
 import { Feed } from '../feed.schema';
 
 @InputType('InputGetFeed')
-export class getFeedRequest {
+export class GetFeedRequest {
   @Field((type) => Int)
   page: number;
 }

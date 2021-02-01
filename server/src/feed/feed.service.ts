@@ -25,4 +25,9 @@ export class FeedService {
       .limit(10);
     return feeds;
   }
+
+  async getTotal(): Promise<number> {
+    const total = await this.feedModel.countDocuments();
+    return total;
+  }
 }
