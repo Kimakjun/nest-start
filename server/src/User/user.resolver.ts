@@ -1,5 +1,8 @@
-import { NotFoundException } from '@nestjs/common';
+import { NotFoundException, UseGuards } from '@nestjs/common';
 import { Args, Mutation, Resolver, Query } from '@nestjs/graphql';
+import { AuthGuard } from '@nestjs/passport';
+import { jwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { CurrentUser } from 'src/decorator/user.decorator';
 import {
   RegisterUserRequest,
   RegisterUserResponse,
@@ -11,6 +14,7 @@ import { UserService } from './user.service';
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
+  @UseGuards(jwtAuthGuard)
   @Query(() => String)
   sayHello(): string {
     return 'Hello World!';

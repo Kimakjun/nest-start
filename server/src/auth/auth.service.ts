@@ -17,13 +17,12 @@ export class AuthService {
 
     if (!user || !isRightPassword) return null;
 
-    const { password, ...result } = user;
-
-    return result;
+    return { id: user._id, name: user.name };
   }
 
-  async login(user: User) {
-    const payload = { userId: user._id };
+  async login(user: any) {
+    const payload = { userId: user.id };
+
     const accessToken = this.jwtService.sign(payload);
     return accessToken;
   }
