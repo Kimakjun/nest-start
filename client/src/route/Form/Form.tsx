@@ -1,6 +1,5 @@
-import { Button, Input } from "antd";
-import React, { FC } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { FC } from "react";
+import { useForm } from "react-hook-form";
 import "./form.css";
 
 interface IFormInputs {
@@ -9,13 +8,7 @@ interface IFormInputs {
 }
 
 const Form: FC = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    errors,
-    control,
-  } = useForm<IFormInputs>();
+  const { register, handleSubmit, reset, errors } = useForm<IFormInputs>();
   const onSubmit = (data: IFormInputs) => {
     alert(JSON.stringify(data));
     reset(); // 폼의 값 에러 리셋
