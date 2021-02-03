@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { AddInputRequest } from './dto/addFeed.dto';
-import { getFeedRequest } from './dto/getFeeds.dto';
+import { AddFeedRequest } from './dto/addFeed.dto';
+import { GetFeedRequest } from './dto/getFeeds.dto';
 import { Feed, FeedDocument } from './feed.schema';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class FeedService {
     @InjectModel(Feed.name) private readonly feedModel: Model<FeedDocument>,
   ) {}
 
-  async addFeed(input: AddInputRequest): Promise<Feed> {
+  async addFeed(input: AddFeedRequest): Promise<Feed> {
     const feed = await this.feedModel.create(input);
     return feed;
   }

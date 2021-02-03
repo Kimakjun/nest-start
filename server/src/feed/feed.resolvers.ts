@@ -1,5 +1,5 @@
 import { Query, Args, Resolver, Mutation } from '@nestjs/graphql';
-import { totalmem } from 'os';
+
 import { AddFeedsResponse, AddFeedRequest } from './dto/addFeed.dto';
 import { GetFeedRequest, GetFeedsResponse } from './dto/getFeeds.dto';
 import { FeedService } from './feed.service';
