@@ -5,11 +5,14 @@ import Form from "./route/Form";
 import { ApolloProvider } from "@apollo/client";
 import client from "./apollo";
 
+import PageNation from "./route/PageNation";
+
 const App: FC = () => (
   <ApolloProvider client={client}>
     <Router>
       <Switch>
         <Route exact path="/" component={Form} />
+        <Route exact path="/pagination" component={PageNation} />
       </Switch>
     </Router>
   </ApolloProvider>
