@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { feedModule } from './feed/feed.module';
 
 const PROD = process.env.NODE_ENV === 'production';
 
@@ -11,6 +12,7 @@ const PROD = process.env.NODE_ENV === 'production';
   imports: [
     UserModule,
     AuthModule,
+    feedModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
