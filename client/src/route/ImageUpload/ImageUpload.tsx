@@ -3,16 +3,27 @@ import { Form, Upload, Button, Input } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import "./ImageUpload.css";
+import { UPLOAD_FILE } from "../../queries/upload";
+import { useMutation } from "@apollo/client";
 
 const ImageUpload: FC = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const [addFileMutation] = useMutation(UPLOAD_FILE, {
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
   const onSubmit = (data: any) => {
     console.log(data);
   };
 
-  const customRequest = () => {
+  const customRequest = (data: any) => {
     console.log("image Upload mutaion");
+    addFileMutation({
+      variables: { file: data.file },
+    });
   };
 
   return (
@@ -34,10 +45,6 @@ const ImageUpload: FC = () => {
             )}
           </Upload>
         </FormItem>
-
-        <Button type="primary" htmlType="submit">
-          등록
-        </Button>
       </Form>
     </>
   );
