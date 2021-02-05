@@ -6,6 +6,7 @@ import { ApolloProvider } from "@apollo/client";
 import client from "./apollo";
 
 import PageNation from "./route/PageNation";
+import ImageUpload from "./route/ImageUpload";
 
 const App: FC = () => (
   <ApolloProvider client={client}>
@@ -13,6 +14,7 @@ const App: FC = () => (
       <Switch>
         <Route exact path="/" component={Form} />
         <Route exact path="/pagination" component={PageNation} />
+        <Route exact path="/imageUpload" component={ImageUpload} />
       </Switch>
     </Router>
   </ApolloProvider>

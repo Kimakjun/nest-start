@@ -25,4 +25,7 @@ export class FeedResolver {
     const feed = await this.feedService.addFeed(input);
     return { result: 'success', feed: feed };
   }
+
+  @Mutation
+
 }
