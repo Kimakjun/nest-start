@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { Form, Upload, Button, Input } from "antd";
+import { Form, Upload, Button, Input, Image } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import "./ImageUpload.css";
@@ -8,10 +8,13 @@ import { useMutation } from "@apollo/client";
 
 const ImageUpload: FC = () => {
   const [imageUrl, setImageUrl] = useState("");
-  const [loading, setLoading] = useState(false);
+
   const [addFileMutation] = useMutation(UPLOAD_FILE, {
     onError: (error) => {
       console.log(error);
+    },
+    onCompleted: ({ uploadFile }) => {
+      setImageUrl(uploadFile.url);
     },
   });
 
@@ -36,10 +39,13 @@ const ImageUpload: FC = () => {
             customRequest={customRequest}
           >
             {imageUrl ? (
-              <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
+              <img
+                src={imageUrl}
+                alt="avatar"
+                style={{ width: "100%", height: "100%" }}
+              />
             ) : (
               <div>
-                {loading ? <LoadingOutlined /> : <PlusOutlined />}
                 <div style={{ marginTop: 8 }}>Upload</div>
               </div>
             )}
