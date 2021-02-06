@@ -9,4 +9,7 @@ export class AddFileRequest {
 }
 
 @ObjectType()
-export class AddFileResponse extends BaseResponse {}
+export class AddFileResponse extends BaseResponse {
+  @Field()
+  url: String;
+}
